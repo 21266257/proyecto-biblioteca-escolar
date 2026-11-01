@@ -4,13 +4,20 @@ using System.ComponentModel;
 
 namespace proyecto_biblioteca_escolar
 {
-    internal class program
+    internal class Program
     {
         static void Main(string[] args)
         {
             Console.Title = "Biblioteca escolar";
 
             List<Titulo> catalogo = CargarDatos();
+            Console.WriteLine("Estado incial del catalogo");
+            MostrarCatalogo(catalogo);
+
+            RealizarPrestamo(catalogo[0], "Prestamo #1");
+            RealizarPrestamo(catalogo[3], "Prestamo #2");
+            RealizarPrestamo(catalogo[3], "Prestamo #3");
+            Console.WriteLine("Estado del catalogo despues de los prestamos simulados");
             MostrarCatalogo(catalogo);
 
             Console.WriteLine("\n" + new string('=', 80));
@@ -42,7 +49,22 @@ namespace proyecto_biblioteca_escolar
 
             foreach (var libro in lista)
             {
-                Console.WriteLine($"{libro.ISBN, -18} | {libro.Nombre, -34} | {libro.Prestamos, -10} | {libro.TotalEjemplares, -10}");
+                Console.WriteLine($"{libro.ISBN, -18} | {libro.Nombre, -34} | {libro.Prestamos, -10} | {libro.EjemplaresDisponibles(), -10}");
+            }
+        }
+
+        static void RealizarPrestamo(Titulo libro, string numPrestamo)
+        {
+            Console.WriteLine($"\n[{numPrestamo}] Libro prestado: '{libro.Nombre}' (ISBN: {libro.ISBN})");
+            Console.WriteLine($" Disponibles antes del prestamo: {libro.EjemplaresDisponibles()}");
+
+            if (libro.PrestamosEjemplares())
+            {
+                Console.WriteLine($"Se presto un ejemplar. Disponibles: {libro.EjemplaresDisponibles()}");
+            }
+            else
+            {
+                Console.WriteLine($"No hay ejemplares de este libro.");
             }
         }
     }

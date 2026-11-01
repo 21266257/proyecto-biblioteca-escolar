@@ -21,5 +21,34 @@ namespace proyecto_biblioteca_escolar
         }
 
         public int TotalEjemplares => Ejemplares.Length;
+
+
+        //Dia 3
+        public int EjemplaresDisponibles()
+        {
+            int disponibles = 0;
+            foreach (int ejemplar in Ejemplares)
+            {
+                if (ejemplar == 1)
+                {
+                    disponibles++;
+                }
+            }
+            return disponibles;
+        }
+
+        public bool PrestamosEjemplares()
+        {
+            for (int i = 0; i < Ejemplares.Length; i++)
+            {
+                if (Ejemplares[i] == 1)
+                {
+                    Ejemplares[i] = 0;
+                    Prestamos++;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
