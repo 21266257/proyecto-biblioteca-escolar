@@ -14,6 +14,8 @@ namespace proyecto_biblioteca_escolar
             Console.WriteLine("Estado incial del catalogo");
             MostrarCatalogo(catalogo);
 
+            OrdenarInsercion(catalogo);
+
             RealizarPrestamo(catalogo[0], "Prestamo #1");
             RealizarPrestamo(catalogo[3], "Prestamo #2");
             RealizarPrestamo(catalogo[3], "Prestamo #3");
@@ -65,6 +67,22 @@ namespace proyecto_biblioteca_escolar
             else
             {
                 Console.WriteLine($"No hay ejemplares de este libro.");
+            }
+        }
+
+        static void OrdenarInsercion(List<Titulo> lista)
+        {
+            for (int i = 1; i < lista.Count; i++)
+            {
+                Titulo clave = lista[i];
+                int j = i - 1;
+
+                while (j >= 0 && lista[j].Prestamos < clave.Prestamos)
+                {
+                    lista[j + 1] = lista[j];
+                    j--;
+                }
+                lista[j + 1] = clave;
             }
         }
     }
