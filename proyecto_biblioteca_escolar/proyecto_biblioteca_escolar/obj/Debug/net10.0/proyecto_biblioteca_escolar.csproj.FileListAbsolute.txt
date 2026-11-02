@@ -14,3 +14,13 @@ C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-bibl
 C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Debug\net10.0\proyecto_biblioteca_escolar.genruntimeconfig.cache
 C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Debug\net10.0\ref\proyecto_biblioteca_escolar.dll
 C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Debug\net10.0\proyecto.4706189F.Up2Date
+C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Output\Debug\net10.0\proyecto_biblioteca_escolar.exe
+C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Output\Debug\net10.0\proyecto_biblioteca_escolar.deps.json
+C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Output\Debug\net10.0\proyecto_biblioteca_escolar.runtimeconfig.json
+C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Output\Debug\net10.0\proyecto_biblioteca_escolar.dll
+C:\Users\yaelz\Downloads\Proyecto_integrador\proyecto_integrador_1\proyecto-biblioteca-escolar\proyecto_biblioteca_escolar\proyecto_biblioteca_escolar\obj\Output\Debug\net10.0\proyecto_biblioteca_escolar.pdb
+C:\Users\yaelz\AppData\Local\Temp\Builds\Debug\net10.0\proyecto_biblioteca_escolar.exe
+C:\Users\yaelz\AppData\Local\Temp\Builds\Debug\net10.0\proyecto_biblioteca_escolar.deps.json
+C:\Users\yaelz\AppData\Local\Temp\Builds\Debug\net10.0\proyecto_biblioteca_escolar.runtimeconfig.json
+C:\Users\yaelz\AppData\Local\Temp\Builds\Debug\net10.0\proyecto_biblioteca_escolar.dll
+C:\Users\yaelz\AppData\Local\Temp\Builds\Debug\net10.0\proyecto_biblioteca_escolar.pdb

@@ -9,18 +9,47 @@ namespace proyecto_biblioteca_escolar
         static void Main(string[] args)
         {
             Console.Title = "Biblioteca escolar";
-
+            //Cargamos los datos
             List<Titulo> catalogo = CargarDatos();
+            //Inicia catalogo
             Console.WriteLine("Estado incial del catalogo");
             MostrarCatalogo(catalogo);
-
+            //Los ordena por insercion 
             OrdenarInsercion(catalogo);
-
+            //Prestamos
             RealizarPrestamo(catalogo[0], "Prestamo #1");
             RealizarPrestamo(catalogo[3], "Prestamo #2");
             RealizarPrestamo(catalogo[3], "Prestamo #3");
+            //Muestra el catalogo despues de los prestamos
             Console.WriteLine("Estado del catalogo despues de los prestamos simulados");
             MostrarCatalogo(catalogo);
+
+            //Dia 5
+            catalogo.Sort((x, y) => x.ISBN.CompareTo(y.ISBN));
+
+            Console.WriteLine("Busqueda binaria por ISBN.");
+
+            // Búsqueda por ISBN "existente"
+            string isbnExistente = "978-0131103627";
+            Console.WriteLine($"\nBuscando ISBN: '{isbnExistente}'.");
+            BuscarPorISBNBi(catalogo, isbnExistente);
+
+            // Búsqueda por ISBN "inexistente"
+            string isbnInexistente = "978-0000000000";
+            Console.WriteLine($"\nBuscando ISBN: '{isbnInexistente}'.");
+            BuscarPorISBNBi(catalogo, isbnInexistente);
+
+            Console.WriteLine("Busqueda secuencial por titulo.");
+
+            //Busqueda por titulo existente
+            string tituloExistente = "El lenguaje de programacion C";
+            Console.WriteLine($"\nBuscando Titulo: '{tituloExistente}'.");
+            BuscarPorTitulo(catalogo, tituloExistente);
+
+            //Busqueda por titulo inexistente
+            string tituloInexistente = "Aprende con python";
+            Console.WriteLine($"\nBuscando Titulo: '{tituloInexistente}'.");
+            BuscarPorTitulo(catalogo, tituloInexistente);
 
             Console.WriteLine("\n" + new string('=', 80));
             Console.WriteLine("Carga finalizada correctamente. No hay celdas nulas");
@@ -46,12 +75,12 @@ namespace proyecto_biblioteca_escolar
 
         static void MostrarCatalogo(List<Titulo> lista)
         {
-            Console.WriteLine($"{"ISBN", -18} | {"Titulo", -34} | {"Prestamos", -10} | {"Ejemplares", -10}");
+            Console.WriteLine($"{"ISBN",-18} | {"Titulo",-34} | {"Prestamos",-10} | {"Ejemplares",-10}");
             Console.WriteLine(new string('-', 80));
 
             foreach (var libro in lista)
             {
-                Console.WriteLine($"{libro.ISBN, -18} | {libro.Nombre, -34} | {libro.Prestamos, -10} | {libro.EjemplaresDisponibles(), -10}");
+                Console.WriteLine($"{libro.ISBN,-18} | {libro.Nombre,-34} | {libro.Prestamos,-10} | {libro.EjemplaresDisponibles(),-10}");
             }
         }
 
@@ -83,6 +112,60 @@ namespace proyecto_biblioteca_escolar
                     j--;
                 }
                 lista[j + 1] = clave;
+            }
+        }
+
+        static void BuscarPorISBNBi(List<Titulo> lista, string isbnBuscado)
+        {
+            int inicio = 0;
+            int fin = lista.Count - 1;
+            bool encontrado = false;
+
+            while (inicio <= fin)
+            {
+                int medio = inicio + (fin - inicio) / 2;
+                int comparacion = string.CompareOrdinal(lista[medio].ISBN, isbnBuscado);
+
+                if (comparacion == 0)
+                {
+                    Console.WriteLine($"-> Libro encontrado: '{lista[medio].Nombre}' (ISBN: {lista[medio].ISBN})");
+                    encontrado = true;
+                    break;
+                }
+
+                if (comparacion < 0)
+                {
+                    inicio = medio + 1;
+                }
+                else
+                {
+                    fin = medio - 1;
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine($"-> El libro con ISBN '{isbnBuscado}' no fue encontrado en el catalogo.");
+            }
+        }
+
+        static void BuscarPorTitulo(List<Titulo> lista, string tituloBuscado)
+        {
+            bool encontrado = false;
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].Nombre.Equals(tituloBuscado, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($"-> Libro encontrado: '{lista[i].Nombre}' (ISBN: {lista[i].ISBN})");
+                    encontrado = true;
+                    break; 
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine($"-> El libro con titulo '{tituloBuscado}' no fue encontrado en el catalogo.");
             }
         }
     }
