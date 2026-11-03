@@ -11,12 +11,17 @@ namespace proyecto_biblioteca_escolar
             Console.Title = "Biblioteca escolar";
             //Cargamos los datos
             List<Titulo> catalogo = CargarDatos();
+
             //Inicia catalogo
             Console.WriteLine("Estado incial del catalogo");
             MostrarCatalogo(catalogo);
+
+
             //Los ordena por insercion 
             OrdenarInsercion(catalogo);
-            //Prestamos
+
+
+            //Prestamos 
             RealizarPrestamo(catalogo[0], "Prestamo #1");
             RealizarPrestamo(catalogo[3], "Prestamo #2");
             RealizarPrestamo(catalogo[3], "Prestamo #3");
@@ -24,7 +29,7 @@ namespace proyecto_biblioteca_escolar
             Console.WriteLine("Estado del catalogo despues de los prestamos simulados");
             MostrarCatalogo(catalogo);
 
-            //Dia 5
+            //Integracion y prueba
             catalogo.Sort((x, y) => x.ISBN.CompareTo(y.ISBN));
 
             Console.WriteLine("Busqueda binaria por ISBN.");
