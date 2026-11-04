@@ -31,6 +31,8 @@ namespace proyecto_biblioteca_escolar
 
             //Integracion y prueba
             catalogo.Sort((x, y) => x.ISBN.CompareTo(y.ISBN));
+            //Arreglo para verificacion con Array.BinarySearch
+            string[] arregloISBN = catalogo.ConvertAll(x => x.ISBN).ToArray();
 
             Console.WriteLine("Busqueda binaria por ISBN.");
 
@@ -38,11 +40,13 @@ namespace proyecto_biblioteca_escolar
             string isbnExistente = "978-0131103627";
             Console.WriteLine($"\nBuscando ISBN: '{isbnExistente}'.");
             BuscarPorISBNBi(catalogo, isbnExistente);
+            Console.WriteLine($"Verificacion de Array.BinarySearch: {Array.BinarySearch(arregloISBN, isbnExistente)}");
 
             // Búsqueda por ISBN "inexistente"
             string isbnInexistente = "978-0000000000";
             Console.WriteLine($"\nBuscando ISBN: '{isbnInexistente}'.");
             BuscarPorISBNBi(catalogo, isbnInexistente);
+            Console.WriteLine($"Verificacion de Array.BinarySearch: {Array.BinarySearch(arregloISBN, isbnInexistente)}");
 
             Console.WriteLine("Busqueda secuencial por titulo.");
 
@@ -125,15 +129,17 @@ namespace proyecto_biblioteca_escolar
             int inicio = 0;
             int fin = lista.Count - 1;
             bool encontrado = false;
+            int comparaciones = 0;
 
             while (inicio <= fin)
             {
+                comparaciones++;
                 int medio = inicio + (fin - inicio) / 2;
                 int comparacion = string.CompareOrdinal(lista[medio].ISBN, isbnBuscado);
 
                 if (comparacion == 0)
                 {
-                    Console.WriteLine($"-> Libro encontrado: '{lista[medio].Nombre}' (ISBN: {lista[medio].ISBN})");
+                    Console.WriteLine($"Libro encontrado: '{lista[medio].Nombre}' (ISBN: {lista[medio].ISBN} - Comparaciones: {comparaciones})");
                     encontrado = true;
                     break;
                 }
@@ -150,7 +156,7 @@ namespace proyecto_biblioteca_escolar
 
             if (!encontrado)
             {
-                Console.WriteLine($"-> El libro con ISBN '{isbnBuscado}' no fue encontrado en el catalogo.");
+                Console.WriteLine($"El libro con ISBN '{isbnBuscado}' no fue encontrado en el catalogo. - Comparaciones: {comparaciones}");
             }
         }
 
@@ -162,7 +168,7 @@ namespace proyecto_biblioteca_escolar
             {
                 if (lista[i].Nombre.Equals(tituloBuscado, StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine($"-> Libro encontrado: '{lista[i].Nombre}' (ISBN: {lista[i].ISBN})");
+                    Console.WriteLine($"Libro encontrado: '{lista[i].Nombre}' (ISBN: {lista[i].ISBN})");
                     encontrado = true;
                     break; 
                 }
@@ -170,7 +176,7 @@ namespace proyecto_biblioteca_escolar
 
             if (!encontrado)
             {
-                Console.WriteLine($"-> El libro con titulo '{tituloBuscado}' no fue encontrado en el catalogo.");
+                Console.WriteLine($"El libro con titulo '{tituloBuscado}' no fue encontrado en el catalogo.");
             }
         }
     }
